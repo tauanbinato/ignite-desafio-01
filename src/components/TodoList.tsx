@@ -15,12 +15,17 @@ interface TodoTask {
 interface TodoListProps {
   list: TodoTask[];
   onCheckBoxClickedCallback: (id:string) => void;
+  onDeleteCallback: (id:string) => void;
 }
 
-export function TodoList({ list, onCheckBoxClickedCallback } : TodoListProps) {
+export function TodoList({ list, onCheckBoxClickedCallback, onDeleteCallback } : TodoListProps) {
 
   function handleTaskCompleted(id: string) {
     onCheckBoxClickedCallback(id);
+  }
+
+  function handleDeleteTask(id: string) {
+    onDeleteCallback(id);
   }
 
   return (
@@ -52,7 +57,13 @@ export function TodoList({ list, onCheckBoxClickedCallback } : TodoListProps) {
         : 
         
         list.map(todo => {
-          return <TodoCard key={todo.id} task={todo} onCheckBoxClickedCallback={handleTaskCompleted}/>
+          return <TodoCard 
+            key={todo.id} 
+            task={todo} 
+            onCheckBoxClickedCallback={handleTaskCompleted}
+            onDeleteTaskClickedCallback={handleDeleteTask}
+          />
+        
         })
         
         

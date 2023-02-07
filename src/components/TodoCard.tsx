@@ -10,12 +10,17 @@ interface TodoCardProps {
     isCompleted: boolean
   };
   onCheckBoxClickedCallback: (id:string) => void;
+  onDeleteTaskClickedCallback: (id: string) => void;
 }
 
-export function TodoCard({ task, onCheckBoxClickedCallback } : TodoCardProps) {
+export function TodoCard({ task, onCheckBoxClickedCallback, onDeleteTaskClickedCallback } : TodoCardProps) {
 
   function handleOnCheckBoxClick() {
     onCheckBoxClickedCallback(task.id);
+  }
+
+  function handleDeleteTask() {
+    onDeleteTaskClickedCallback(task.id);
   }
 
   return (
@@ -26,7 +31,7 @@ export function TodoCard({ task, onCheckBoxClickedCallback } : TodoCardProps) {
         <Circle size={24} className={styles.checkBox} onClick={handleOnCheckBoxClick}/>
       }
       <p>{task.title}</p>
-      <Trash size={24} className={styles.deleteBtn}/>
+      <Trash size={24} className={styles.deleteBtn} onClick={handleDeleteTask}/>
     </div>
     
   );

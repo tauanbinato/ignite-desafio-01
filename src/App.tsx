@@ -24,11 +24,17 @@ function App() {
     setTodoList([...m_TodoList, newTask]);
   }
 
-  function handleTaskCompleted(id) {
+  function handleTaskCompleted(id: string) {
     let index = m_TodoList.findIndex(todo => todo.id === id);
     let newTodoList = [...m_TodoList];
     newTodoList[index].isCompleted = !newTodoList[index].isCompleted;
+    setTodoList(newTodoList);
+  }
 
+  function handleOnDelete(id: string) {
+    let index = m_TodoList.findIndex(todo => todo.id === id);
+    let newTodoList = [...m_TodoList];
+    newTodoList.splice(index, 1);
     setTodoList(newTodoList);
   }
 
@@ -38,7 +44,12 @@ function App() {
 
       <TodoInput addTaskCallback={addTodo}></TodoInput>
 
-      <TodoList list={m_TodoList} onCheckBoxClickedCallback={handleTaskCompleted}></TodoList>
+      <TodoList 
+        list={m_TodoList} 
+        onCheckBoxClickedCallback={handleTaskCompleted}
+        onDeleteCallback={handleOnDelete}
+      >
+      </TodoList>
     </div>
   )
 }
