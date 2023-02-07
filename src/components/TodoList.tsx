@@ -1,37 +1,28 @@
 import styles from './TodoList.module.css';
 import { Clipboard } from 'phosphor-react'
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
-import {v4 as uuidv4 } from 'uuid';
 import { TodoCard } from './TodoCard';
 
-const todoList = [
-  {
-    id: uuidv4(),
-    title: 'Terminar desafio',
-    publishedAt: new Date('2023-02-02 20:00:00'),
-    completedAt: new Date('2023-02-02 20:00:00')
-  },
-  {
-    id: uuidv4(),
-    title: 'Terminar desafio',
-    publishedAt: new Date('2023-02-02 20:00:00'),
-    completedAt: new Date('2023-02-02 20:00:00')
-  },
-  {
-    id: uuidv4(),
-    title: 'Terminar desafio',
-    publishedAt: new Date('2023-02-02 20:00:00'),
-    completedAt: new Date('2023-02-02 20:00:00')
-  },
-  {
-    id: uuidv4(),
-    title: 'Terminar desafio',
-    publishedAt: new Date('2023-02-02 20:00:00'),
-    completedAt: new Date('2023-02-02 20:00:00')
-  },
-]
 
-export function TodoList(props: any) {
+interface TodoTask {
+  id: string,
+  title: string,
+  publishedAt: Date,
+  completedAt: Date | string,
+  isCompleted: boolean
+}
+
+interface TodoListProps {
+  list: TodoTask[];
+  onCheckBoxClickedCallback: (id:string) => void;
+}
+
+export function TodoList({ list, onCheckBoxClickedCallback } : TodoListProps) {
+
+  function handleTaskCompleted(id: string) {
+    onCheckBoxClickedCallback(id);
+  }
+
   return (
     <div className={styles.todoListContainer}>
 
@@ -39,17 +30,19 @@ export function TodoList(props: any) {
       <header className={styles.todoListHeader}>
         <div className={styles.createdTasks}>
           <p>Tarefas Criadas</p>
-          <p>0</p>
+          <p>{ list.length }</p>
         </div>
         
         <div className={styles.concludedTasks}>
           <p>Concluídas</p>
-          <p>0</p>
+          <p> 
+            { list.filter(task => { return task.isCompleted }).length }
+          </p>
         </div>
       </header>
 
       {/* When List is empty  */}
-      { todoList.length === 0 ? 
+      { list.length === 0 ? 
 
         <div className={styles.emptyList}>
           <Clipboard className={styles.clipboard} size={56}/>
@@ -58,8 +51,8 @@ export function TodoList(props: any) {
         </div>
         : 
         
-        todoList.map(todo => {
-          return <TodoCard key={todo.id}/>
+        list.map(todo => {
+          return <TodoCard key={todo.id} task={todo} onCheckBoxClickedCallback={handleTaskCompleted}/>
         })
         
         

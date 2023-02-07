@@ -1,22 +1,44 @@
 import { useState } from 'react'
 import { Header } from './components/header'
 import reactLogo from './assets/react.svg'
+import {v4 as uuidv4 } from 'uuid';
 
 import './global.css'
 import styles from './App.module.css';
 import { TodoInput } from './components/TodoInput'
 import { TodoList } from './components/TodoList'
 
+
 function App() {
 
+  const [m_TodoList, setTodoList] = useState([]);
+
+  function addTodo(taskText: string) {
+    let newTask = {
+      id: uuidv4(),
+      title: taskText,
+      publishedAt: Date.now(),
+      completedAt: null,
+      isCompleted: false
+    }
+    setTodoList([...m_TodoList, newTask]);
+  }
+
+  function handleTaskCompleted(id) {
+    let index = m_TodoList.findIndex(todo => todo.id === id);
+    let newTodoList = [...m_TodoList];
+    newTodoList[index].isCompleted = !newTodoList[index].isCompleted;
+
+    setTodoList(newTodoList);
+  }
 
   return (
     <div className={styles.container}>
       <Header></Header>
 
-      <TodoInput></TodoInput>
+      <TodoInput addTaskCallback={addTodo}></TodoInput>
 
-      <TodoList></TodoList>
+      <TodoList list={m_TodoList} onCheckBoxClickedCallback={handleTaskCompleted}></TodoList>
     </div>
   )
 }

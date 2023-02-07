@@ -12,8 +12,17 @@
   margin-bottom: 0.75rem;
 }
 
+.todoCardBody p {
+  flex-grow: 1;
+}
+
 .checkBox {
   color: var(--blue-400);
+  margin-right: 0.75rem;
+}
+
+.checkBoxCompleted {
+  color: var(--purple-500);
   margin-right: 0.75rem;
 }
 
