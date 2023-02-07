@@ -1,0 +1,22 @@
+.todoCardBody{
+  display: flex;
+  background-color: var(--gray-500);
+  border-radius: 8px;
+  overflow-wrap: break-word;
+  padding: 1rem;
+  align-items: center;
+  color: var(--gray-100);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.225rem;
+  margin-bottom: 0.75rem;
+}
+
+.checkBox {
+  color: var(--blue-400);
+  margin-right: 0.75rem;
+}
+
+.deleteBtn {
+  color: var(--gray-300);
+}

@@ -1,0 +1,85 @@
+.todoListContainer{
+  width: 46rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.todoListHeader {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  justify-content: space-between;
+  margin-top: 4rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.createdTasks {
+  display: flex;
+  align-items: center;
+}
+
+.createdTasks p {
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 1rem;
+  color: var(--blue-400);
+}
+
+.createdTasks p:nth-child(2) {
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 8px;
+  background-color: var(--gray-400);
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+  color: var(--gray-100);
+} 
+
+.concludedTasks {
+  display: flex;
+
+}
+
+.concludedTasks p {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--purple-500);
+}
+
+.concludedTasks p:nth-child(2) {
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 8px;
+  background-color: var(--gray-400);
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+  color: var(--gray-100);
+  margin-left: 1rem;
+}
+
+.emptyList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5.33rem;
+  padding-bottom: 5.33rem;
+}
+
+.clipboard {
+  margin-bottom: 1rem;
+}
+
+.emptyList strong {
+  line-height: 1.4rem;
+}
+
+.emptyList p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-300);
+}

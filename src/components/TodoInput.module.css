@@ -1,10 +1,13 @@
+.todoInputContainer {
+  width: 46rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .taskForm {
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: -1.6875rem;
-margin-left: 1rem;
-margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -2rem;
 }
 
 .taskForm input {
@@ -12,10 +15,10 @@ margin-right: 1rem;
   border:1px;
   border-radius: 8px;
   height: 3.375rem;
-  width: 39.875rem;
   color: var(--gray-300);
   padding: 1rem;
   margin-right: 0.5rem;
+  width: 100%;
 }
 
 .taskForm input:focus {
@@ -29,7 +32,6 @@ margin-right: 1rem;
   color: var(--gray-100);
   padding: 1rem;
   border-radius: 8px;
-  width: 5.625rem;
   border: 1px;
   line-height: 1.225rem;
   font-weight: 700;

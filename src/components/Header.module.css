@@ -1,8 +1,9 @@
-.header {
+.headerContainer {
   background: var(--gray-700);
   display: flex;
-  justify-content: center;
   padding: 4.5rem 0;
+  width: 100%;
+  justify-content: center;
 }
 
 .header img {

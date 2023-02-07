@@ -3,7 +3,7 @@ import { PlusCircle } from 'phosphor-react'
 
 export function TodoInput(props: any) {
   return (
-    <div>
+    <div className={styles.todoInputContainer}>
       <form className={styles.taskForm}>
         <input placeholder='Adicione uma nova tarefa'></input>
         <footer>
